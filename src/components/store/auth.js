@@ -24,12 +24,15 @@ const AuthProvider = ({ children }) => {
     setToken(null);
     localStorage.removeItem("authToken");
   };
+  const getBlogId = () =>{
+
+  }
 
   const isLoggedIn = !!token;
 
   return (
     <AuthContext.Provider
-      value={{ token, saveTokenInLocalStr, isLoggedIn, LogoutUser }}
+      value={{ token, saveTokenInLocalStr, isLoggedIn, LogoutUser, getBlogId }}
     >
       {children}
     </AuthContext.Provider>

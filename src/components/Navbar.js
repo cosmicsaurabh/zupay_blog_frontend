@@ -16,9 +16,12 @@ export const Navbar = () => {
   const handleLogoutClick = () => {
     navigate("/logout");
   };
+  const handleLogoClick = () => {
+    navigate("/");
+  };
 
   return (<Wrapper>
-    <img src={logo} alt="ZuAi"></img>
+    <img src={logo} alt="ZuAi" onClick={handleLogoClick}></img>
     <FlexRow>
       {
         (!isLoggedIn )?    

@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import axios from 'axios';
-import Blog from "./Blog";
+import Overview from"./Overview";
 
 export const Home = () => {
 
   const [blogs, setBlogs] = useState();
 
   const fetchData  = async () => {
-    const fetchedData = await axios.get('/api/v1/blogs');
+    const fetchedData = await axios.get(`${process.env.REACT_APP_BASE_BACKEND_URL}/api/v1/blogs`);
     return fetchedData.data;
   }
 
@@ -21,22 +21,27 @@ export const Home = () => {
     fun();
   }, [])
 
-  const daysOld = (publishedDate) => {
-    const [day, month, year] = publishedDate.split('/').map(Number);
-    
-    const published = new Date(`${year}-${month}-${day}`);
-    
-    const currentDate = new Date();
-    const differenceInTime = currentDate - published;
-    const differenceInDays = Math.floor(differenceInTime / (1000 * 60 * 60 * 24));
-    
-    return differenceInDays;
-  };
+  
   // console.log(blogs);
   return (<>
     <Wrapper>
     <URContainer>Useful Resources</URContainer>
-    {blogs && blogs.map((item) => (
+    {
+      blogs && blogs.map((item) => (
+        <Overview 
+        _id = {item._id}
+        title = {item.title}
+        publishedDate = {item.publishedDate}
+        publishedTime = {item.publishedTime}
+
+        contents = {item.contents}
+        readTime = {item.readTime}
+        conclusion = {item.conclusion}
+        comments = {item.comments}
+      />
+       ))
+    }
+    {/* {blogs && blogs.map((item) => (
       <Blog 
       _id = {item._id}
       title = {item.title}
@@ -46,7 +51,7 @@ export const Home = () => {
       conclusion = {item.conclusion}
       comments = {item.comments}
     />
-     ))} 
+     ))}  */}
 
     </Wrapper>
     </>

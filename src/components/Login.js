@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useAuth } from "./store/auth";
 import { Navbar } from "./Navbar";
@@ -57,7 +57,6 @@ const Login = () => {
         navigate("/")
       ) : (
         <div className="full-page">
-          {/* <NavBar /> */}
           <div className="login-container">
             <div className="form-header">
               <h1>Login</h1>

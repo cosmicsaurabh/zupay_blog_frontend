@@ -3,21 +3,19 @@ import { BlogCard } from './BlogCard'
 import { ContentCard } from './ContentCard'
 import BlogHeading from './BlogHeading'
 import styled from "styled-components"
+import { useNavigate } from 'react-router-dom'
 
-const Blog = ({ _id, title, published, contents, readTime, conclusion, comments }) => {
+const Blog = ({ _id, title, publishedTime,publishedDate, contents, readTime, conclusion, comments }) => {
   return (
     <>
       <Wrapper>
         <BlogHeading
           title={title}
-          published={published}
+          publishedTime = {publishedTime}
+            publishedDate = {publishedDate}
           readTime={readTime}
         />
-
-
         <ContentCard contents={contents} _id={_id} />
-
-
         {contents &&
           contents.map((content, index) => (
             <BlogCard

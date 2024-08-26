@@ -1,20 +1,52 @@
 import React from 'react'
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 
-const BlogHeading = ({title, published, readTime}) => {
+const BlogHeading = ({title, publishedTime,publishedDate,daysold, readTime}) => {
+  const location = useLocation();
   return (
     <HeaderWrapper>
         <HeadingWrapper> {title}</HeadingWrapper>
         <FlexRow>
-          <FlexCol>
-            <InnerHeadingWrapper>
+            {
+              location.pathname === "/" 
+                ?
+              (
+                <>
+                <FlexCol>
+
+              <InnerHeadingWrapper>
               Published
             </InnerHeadingWrapper>
             <InnerHeadingWrapper>
-                {published} days ago
+                {daysold} days ago
             </InnerHeadingWrapper>
+                </FlexCol>
+                </>
+              ): (
+                <>
+                <FlexCol>
 
-          </FlexCol>
+              <InnerHeadingWrapper>
+              Published Date
+            </InnerHeadingWrapper>
+            <InnerHeadingWrapper>
+                {publishedDate}
+            </InnerHeadingWrapper>
+                </FlexCol>
+                <FlexCol>
+
+              <InnerHeadingWrapper>
+              Published Time
+            </InnerHeadingWrapper>
+            <InnerHeadingWrapper>
+                {publishedTime}
+            </InnerHeadingWrapper>
+                </FlexCol>
+                </>
+              )
+            }
+
           <FlexCol>
             <InnerHeadingWrapper>
               Read Time

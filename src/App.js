@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import {Home} from './components/Home.js';
 import { Navbar } from './components/Navbar.js';
 import { SideBar } from './components/SideBar.js';
-import axios from 'axios';
-import { useEffect } from 'react';
 import { useAuth } from "./components/store/auth.js";
 import { useNavigate } from "react-router-dom";
 
