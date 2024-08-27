@@ -4,12 +4,11 @@ import BlogHeading from './BlogHeading'
 import styled from "styled-components"
 import { useNavigate } from 'react-router-dom'
 
-const Overview = ({ _id, title, publishedDate,publishedTime, contents, readTime, conclusion, comments }) => {
+const Overview = ({ _id,creatorId, title, publishedDate,publishedTime, contents, readTime, conclusion, comments }) => {
   const navigate = useNavigate();
   const handleDetailsPage =() =>{
 
-    console.log("andar")
-    navigate("/DetailsPage", { state: { _id, title, publishedTime, publishedDate, contents, readTime, conclusion, comments } })
+    navigate("/DetailsPage", { state: { _id,creatorId, title, publishedTime, publishedDate, contents, readTime, conclusion, comments } })
   }
 
   const daysOld = (publishedDate) => {
@@ -28,6 +27,7 @@ const Overview = ({ _id, title, publishedDate,publishedTime, contents, readTime,
       <OverviewWrapper onClick={handleDetailsPage}>
         <BlogHeading
           title={title}
+          creatorId={creatorId}
           daysold = {daysOld(publishedDate)}
           publishedDate={publishedDate}
           publishedTime={publishedTime}

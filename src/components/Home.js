@@ -22,7 +22,6 @@ export const Home = () => {
   }, [])
 
   
-  // console.log(blogs);
   return (<>
     <Wrapper>
     <URContainer>Useful Resources</URContainer>
@@ -30,10 +29,10 @@ export const Home = () => {
       blogs && blogs.map((item) => (
         <Overview 
         _id = {item._id}
+        creatorId = {item.creatorId}
         title = {item.title}
         publishedDate = {item.publishedDate}
         publishedTime = {item.publishedTime}
-
         contents = {item.contents}
         readTime = {item.readTime}
         conclusion = {item.conclusion}
@@ -41,18 +40,6 @@ export const Home = () => {
       />
        ))
     }
-    {/* {blogs && blogs.map((item) => (
-      <Blog 
-      _id = {item._id}
-      title = {item.title}
-      published = {daysOld(item.published)}
-      contents = {item.contents}
-      readTime = {item.readTime}
-      conclusion = {item.conclusion}
-      comments = {item.comments}
-    />
-     ))}  */}
-
     </Wrapper>
     </>
   )

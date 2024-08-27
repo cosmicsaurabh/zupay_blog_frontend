@@ -3,6 +3,7 @@ import { Navbar } from "./Navbar";
 import { SideBar } from "./SideBar";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { useAuth } from "./store/auth";
 import {
   createTheme,
   ThemeProvider,
@@ -35,6 +36,7 @@ export const NewBlog = () => {
   const [errorMsg, setErrorMsg] = useState([]);
 
   const navigate = useNavigate();
+  const { currentUserId } = useAuth();
 
   const handleSectionChange = (index, field, value) => {
     const newSections = sections.map((section, i) =>
@@ -100,10 +102,9 @@ export const NewBlog = () => {
       contents: sections,
       publishedDate: formattedDate,
       publishedTime: formattedTime,
+      creatorId:currentUserId,
     };
     try {
-      console.log(blogData);
-      console.log(JSON.stringify(blogData));
     
       const response = await fetch(`${process.env.REACT_APP_BASE_BACKEND_URL}/api/v1/blogs/create`, {
         method: "POST",
@@ -114,7 +115,6 @@ export const NewBlog = () => {
       });
     
       
-      console.log("Response Body:", await response.text()); // Read the response body as text for debugging
     
       if (response.ok || response.status === 201) {
         // Alert("YaY !!!... Your Blog published successfully !!!"); iski wjah se error

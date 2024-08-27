@@ -12,7 +12,7 @@ const Login = () => {
   });
   const [errorMsg, setErrorMsg] = useState("");
 
-  const { isLoggedIn, saveTokenInLocalStr } = useAuth();
+  const { isLoggedIn, saveTokenInLocalStr, saveCurrentUserIdInLocalStr } = useAuth();
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -22,7 +22,7 @@ const Login = () => {
       [name]: value,
     });
   };
-  console.log(`${process.env.REACT_APP_BASE_BACKEND_URL}/api/auth/login`);
+  // console.log(`${process.env.REACT_APP_BASE_BACKEND_URL}/api/auth/login`);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -37,6 +37,7 @@ const Login = () => {
       if (response.ok) {
         const responseData = await response.json();
         saveTokenInLocalStr(responseData.token);
+        saveCurrentUserIdInLocalStr(responseData.userkiid);
         navigate("/");
       } else if (response.status === 400) {
         const responseData = await response.json();
@@ -45,7 +46,7 @@ const Login = () => {
         setErrorMsg("An unexpected error occurred. Please try again.");
       }
     } catch (error) {
-      //console.log(error);
+      console.log(error);
       setErrorMsg("Service is down....try again later");
     }
   };

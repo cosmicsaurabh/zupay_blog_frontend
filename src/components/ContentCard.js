@@ -12,7 +12,7 @@ export const ContentCard = ({_id,contents}) => {
         { contents?.map((content, index) => {
           return ( 
             <>
-           <a href={`#${_id}-${index}`}>{index + 1}. {content.subTitle}</a>
+           <a href={`#${_id}-${index}`}> {index + 1}. {content.subTitle}</a>
            <br/>
            </>
         )

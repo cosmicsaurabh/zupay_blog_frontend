@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const BlogCard = ({id,subTitle,subBody}) => {
+export const BlogCard = ({key,id,subTitle,subBody}) => {
   return (
     <>
       <Wrapper id={id}>

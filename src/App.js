@@ -1,5 +1,3 @@
-// import logo from './logo.svg';
-// import './App.css';
 import styled from 'styled-components';
 import {Home} from './components/Home.js';
 import { Navbar } from './components/Navbar.js';
@@ -12,14 +10,6 @@ import { useNavigate } from "react-router-dom";
 function App() {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
-
-  const handleLoginClick = () => {
-    navigate("/login");
-  };
-
-  const handleRegisterClick = () => {
-    navigate("/register");
-  };
 
   return (
     <>
